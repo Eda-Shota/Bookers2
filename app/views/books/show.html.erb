@@ -1,0 +1,38 @@
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <%= render 'left_item', user: @user %>
+    <div class="col-md-8 offset-md-1">
+      <h2>Book detail</h2>
+      <table class="table table-hover table-inverse">
+        <tbody>
+        <tr>
+          <td>
+            <%= link_to(user_path(@Book_detail.user_id)) do %>
+            <%= image_tag @Book_detail.user.get_profile_image(100,100) %><br>
+            <%= @Book_detail.user.name %>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to(book_path(@Book_detail.id)) do %>
+            <%= @Book_detail.title %>
+            <% end %>
+          </td>
+          <td><%= @Book_detail.body %></td>
+        
+        <% if @Book_detail.user == current_user %>
+          <td><%= link_to(edit_book_path(@Book_detail.id), class: "btn btn-sm btn-success edit_book_54278") do %>
+            <span>Edit</span>
+            <% end %>
+          </td>
+          <td><%= link_to(book_path(@Book_detail.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_book_54278") do %>
+              <span>Destroy</span>
+            <% end %>
+          </td>
+        <% end %>
+        </tr>
+        </tbody>
+      </table>
+
+   </div>
+  </div>
+</div>
